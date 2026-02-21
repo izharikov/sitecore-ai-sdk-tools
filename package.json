@@ -1,0 +1,57 @@
+{
+  "name": "sitecore-ai-sdk-tools",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts",
+    "lint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/izharikov/sitecore-ai-sdk-tools.git"
+  },
+  "keywords": [
+    "sitecore",
+    "ai",
+    "tools"
+  ],
+  "author": "@izharikov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/izharikov/sitecore-ai-sdk-tools/issues"
+  },
+  "homepage": "https://github.com/izharikov/sitecore-ai-sdk-tools#readme",
+  "description": "",
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "eslint": "^9",
+    "eslint-config-next": "16.0.10",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-import-newlines": "^1.4.0",
+    "eslint-plugin-prettier": "^5.5.5",
+    "prettier": "^3.8.1",
+    "typescript-eslint": "^8.56.0"
+  },
+  "peerDependencies": {
+    "ai": "^6.0.0",
+    "zod": "^4.0.0",
+    "@sitecore-marketplace-sdk/client": "^0.3.2",
+    "@sitecore-marketplace-sdk/xmc": "^0.4.0"
+  }
+}
