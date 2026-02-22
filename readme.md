@@ -32,7 +32,7 @@ Works for server-side (full-stack) authentication process in Marketplace Applica
 Use `execution: 'server'` when running in a Node.js environment (e.g. Next.js API route or server action), providing a pre-initialized `experimental_XMC` client:
 
 ```typescript
-import { createSitecoreTools } from "sitecore-ai-sdk-tools";
+import { createAgentTools } from "sitecore-ai-sdk-tools";
 import { experimental_XMC } from "@sitecore-marketplace-sdk/xmc";
 import { generateText } from "ai";
 
@@ -40,7 +40,7 @@ const xmcClient = new experimental_XMC({
   /* your config */
 });
 
-const tools = createSitecoreTools({
+const tools = createAgentTools({
   execution: "server",
   client: xmcClient,
   sitecoreContextId: "your-context-id",
@@ -61,10 +61,10 @@ Works for client-side authentication process in Marketplace Application (default
 Use `execution: 'client'` in your `router.ts` file:
 
 ```typescript
-import { createSitecoreTools, executeSitecoreTool } from "sitecore-ai-sdk-tools";
+import { createAgentTools, executeSitecoreTool } from "sitecore-ai-sdk-tools";
 import { generateText } from "ai";
 
-const tools = createSitecoreTools({ execution: "client" });
+const tools = createAgentTools({ execution: "client" });
 
 const result = await generateText({
   model: yourModel,
@@ -135,10 +135,10 @@ const tools = pageBuilderTools({ needsApproval: false });
 
 ### Options
 
-`createSitecoreTools` accepts a `needsApproval` option to control whether the AI model must request user confirmation before executing each tool call:
+`createAgentTools` accepts a `needsApproval` option to control whether the AI model must request user confirmation before executing each tool call:
 
 ```typescript
-type CreateSitecoreToolsOptions =
+type createAgentToolsOptions =
   | { execution: "client" }
   | { execution: "server"; client: experimental_XMC; sitecoreContextId: string }
   & {
@@ -148,7 +148,7 @@ type CreateSitecoreToolsOptions =
 
 ## Available Tools
 
-### `createSitecoreTools`
+### `createAgentTools`
 
 Returns all XM Cloud tools grouped by domain:
 

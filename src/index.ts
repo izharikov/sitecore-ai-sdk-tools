@@ -3,7 +3,7 @@ import * as clientTools from './tools/client';
 import * as serverTools from './tools/server';
 import { NeedsApproval } from './tools/types';
 
-export type CreateSitecoreToolsOptions = (
+export type CreateAgentToolsOptions = (
   | {
       execution: 'client';
     }
@@ -16,7 +16,7 @@ export type CreateSitecoreToolsOptions = (
   needsApproval?: NeedsApproval;
 };
 
-export function createSitecoreTools(options: CreateSitecoreToolsOptions) {
+export function createAgentTools(options: CreateAgentToolsOptions) {
   if (options.execution === 'client') {
     return {
       ...clientTools.assetTools(options),
