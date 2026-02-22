@@ -1,6 +1,6 @@
 {
   "name": "sitecore-ai-sdk-tools",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha.1",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -53,5 +53,8 @@
     "zod": "^4.0.0",
     "@sitecore-marketplace-sdk/client": "^0.3.2",
     "@sitecore-marketplace-sdk/xmc": "^0.4.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
