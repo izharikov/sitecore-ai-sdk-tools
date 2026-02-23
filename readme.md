@@ -1,5 +1,7 @@
 # sitecore-ai-sdk-tools
 
+[![NPM Version](https://img.shields.io/npm/v/sitecore-ai-sdk-tools)](https://www.npmjs.com/package/sitecore-ai-sdk-tools)
+
 Vercel AI SDK tools definition for Sitecore Marketplace Application.
 
 APIs and SDKs to used:
@@ -23,7 +25,15 @@ This package requires the following dependencies:
 - `ai` - Vercel AI SDK v6
 - `zod` (comes with Vercel AI SDK)
 
-## Usage
+## Agent API Tools
+
+| Integration / Mode | Server-side | Client-side |
+|---|---|---|
+| Marketplace Authentication | ⚠️ Custom authorization required (harder to set up) | ✅ OOTB (no config required) |
+| Vercel AI SDK integration | ✅ OOTB | ⚠️ Custom tool call handling via `onFinish` or `onToolCall` callbacks |
+
+Server-side configuration has stricter prerequisites — you need to configure custom authorization in your Marketplace Application — but offers simpler Vercel AI SDK integration. Client-side configuration, on the other hand, requires no additional authentication setup but involves more complex tool call handling via `onFinish` or `onToolCall` callbacks.
+
 
 ### Server-side
 
@@ -123,27 +133,14 @@ const chat = useChat({
 });
 ```
 
-### Page Builder Tools
+## Page Builder Tools
 
-`pageBuilderTools` provides tools for navigating and controlling the XM Cloud Page Builder UI (only available client-side):
-
-```typescript
-import { pageBuilderTools, executePageBuilderTool } from "sitecore-ai-sdk-tools";
-
-const tools = pageBuilderTools({ needsApproval: false });
-```
-
-### Options
-
-`createAgentTools` accepts a `needsApproval` option to control whether the AI model must request user confirmation before executing each tool call:
+`pageBuilderTools` provides tools for navigating and controlling the XM Cloud Page Builder UI. These are only available client-side:
 
 ```typescript
-type createAgentToolsOptions =
-  | { execution: "client" }
-  | { execution: "server"; client: experimental_XMC; sitecoreContextId: string }
-  & {
-    needsApproval?: NeedsApproval; // from Vercel AI SDK tool()
-  };
+import { pageBuilderTools } from "sitecore-ai-sdk-tools";
+
+const tools = pageBuilderTools();
 ```
 
 ## Available Tools
