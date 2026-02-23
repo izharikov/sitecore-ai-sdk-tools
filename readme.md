@@ -71,7 +71,7 @@ Works for client-side authentication process in Marketplace Application (default
 Use `execution: 'client'` in your `router.ts` file:
 
 ```typescript
-import { createAgentTools, executeSitecoreTool } from "sitecore-ai-sdk-tools";
+import { createAgentTools, executeAgentTool } from "sitecore-ai-sdk-tools";
 import { generateText } from "ai";
 
 const tools = createAgentTools({ execution: "client" });
@@ -95,7 +95,7 @@ const executeTool = async (toolPart: ToolUIPart) => {
       throw new Error('No sitecore context found');
     }
     try {
-      let res = await executeSitecoreTool(
+      let res = await executeAgentTool(
         { client, sitecoreContextId },
         { toolName, input: toolPart.input }
       );

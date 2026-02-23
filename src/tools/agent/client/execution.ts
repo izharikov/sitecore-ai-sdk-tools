@@ -1,3 +1,4 @@
+import { ClientSideContext, ClientSideTool } from '@/tools/types';
 import {
   assetToolsConfig,
   componentsToolsConfig,
@@ -8,7 +9,6 @@ import {
   personalizationToolsConfig,
   sitesToolsConfig,
 } from '../definitions';
-import { ClientSideContext, ClientSideTool } from '../types';
 import {
   clientMutate,
   clientQuery,
@@ -689,7 +689,7 @@ const allTools = {
 
 export type ToolName = keyof typeof allTools;
 
-export async function executeSitecoreTool(
+export async function executeAgentTool(
   context: ClientSideContext,
   tool: ClientSideTool
 ) {

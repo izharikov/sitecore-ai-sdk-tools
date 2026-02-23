@@ -132,4 +132,4 @@ export function componentsTools(commonConfig?: ToolDefinitionConfig) {
   };
 }
 
-export { executeSitecoreTool } from './execution';
+export { executeAgentTool } from './execution';

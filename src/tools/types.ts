@@ -9,7 +9,7 @@ import {
   pagesToolsConfig,
   personalizationToolsConfig,
   sitesToolsConfig,
-} from './definitions';
+} from './agent/definitions';
 
 export type NeedsApproval = Parameters<typeof tool>[0]['needsApproval'];
 
@@ -17,7 +17,7 @@ export type DefaultToolOptions = {
   needsApproval?: NeedsApproval;
 };
 
-export type SitecoreToolName =
+export type AgentToolName =
   | keyof typeof assetToolsConfig
   | keyof typeof pagesToolsConfig
   | keyof typeof personalizationToolsConfig

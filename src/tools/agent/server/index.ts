@@ -11,7 +11,7 @@ import {
   personalizationToolsConfig,
   sitesToolsConfig,
 } from '../definitions';
-import { DefaultToolOptions } from '../types';
+import { DefaultToolOptions } from '../../types';
 
 function wrapTool(commonConfig: DefaultToolOptions) {
   return function <INPUT, OUTPUT>(params: Tool<INPUT, OUTPUT>) {

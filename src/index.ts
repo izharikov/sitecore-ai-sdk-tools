@@ -1,6 +1,6 @@
 import { experimental_XMC } from '@sitecore-marketplace-sdk/xmc';
-import * as clientTools from './tools/client';
-import * as serverTools from './tools/server';
+import * as clientTools from './tools/agent/client';
+import * as serverTools from './tools/agent/server';
 import { NeedsApproval } from './tools/types';
 
 export type CreateAgentToolsOptions = (
@@ -74,6 +74,6 @@ export function createAgentTools(options: CreateAgentToolsOptions) {
   }
 }
 
-export { executeSitecoreTool } from './tools/client';
+export { executeAgentTool } from './tools/agent/client';
 export * from './tools/page-builder';
 export * from './tools/types';
