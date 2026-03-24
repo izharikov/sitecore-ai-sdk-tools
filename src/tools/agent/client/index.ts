@@ -17,9 +17,7 @@ export type ToolDefinitionConfig = {
 
 function wrapTool(commonConfig: ToolDefinitionConfig) {
   const mode = commonConfig.needsApprovalFor ?? 'all';
-  return function <INPUT>(
-    params: Tool<INPUT, never> & { mutation?: boolean }
-  ) {
+  return function <INPUT>(params: Tool<INPUT, never> & { mutation?: boolean }) {
     const { mutation, ...toolParams } = params;
     const needsApproval =
       mode === 'all' || mutation ? commonConfig.needsApproval : undefined;

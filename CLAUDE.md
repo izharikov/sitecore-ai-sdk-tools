@@ -10,8 +10,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - **Build:** `npm run build` (uses tsup, outputs ESM to `dist/`)
 - **Lint:** `npm run lint` (eslint)
+- **Test:** `npm test` (vitest, single run) / `npm run test:watch` (watch mode)
 
-No test suite exists in this project.
+Tests live alongside source files as `*.test.ts`. They are excluded from `tsconfig.json` so tsup DTS generation skips them.
 
 ## Architecture
 
@@ -51,4 +52,6 @@ Tools are grouped into: assets, components, content, environment, jobs, pages, p
 - tsup for bundling with experimental DTS generation
 - Zod v4 for input schemas
 - Vercel AI SDK (`ai` package) for `tool()` definitions
+- vitest for testing
 - Prettier: single quotes, trailing commas (es5), semicolons
+- ESLint enforces `@/` absolute imports over `../../` relative paths

@@ -1,6 +1,7 @@
 import { experimental_XMC } from '@sitecore-marketplace-sdk/xmc';
 import { Tool, tool } from 'ai';
 import { v4 as uuidv4 } from 'uuid';
+import { DefaultToolOptions } from '@/tools/types';
 import {
   assetToolsConfig,
   componentsToolsConfig,
@@ -11,7 +12,6 @@ import {
   personalizationToolsConfig,
   sitesToolsConfig,
 } from '../definitions';
-import { DefaultToolOptions } from '../../types';
 
 function wrapTool(commonConfig: DefaultToolOptions) {
   const mode = commonConfig.needsApprovalFor ?? 'all';

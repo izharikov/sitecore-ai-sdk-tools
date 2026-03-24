@@ -95,7 +95,7 @@ const eslintConfig = defineConfig([
   },
   prettier,
   prettierPlugin,
-  globalIgnores(['dist/**', 'node_modules/**']),
+  globalIgnores(['dist/**', 'node_modules/**', '.tsup/**']),
 ]);
 
 export default eslintConfig;
