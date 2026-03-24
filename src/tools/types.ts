@@ -15,6 +15,7 @@ export type NeedsApproval = Parameters<typeof tool>[0]['needsApproval'];
 
 export type DefaultToolOptions = {
   needsApproval?: NeedsApproval;
+  needsApprovalFor?: 'all' | 'mutations';
 };
 
 export type AgentToolName =

@@ -133,6 +133,31 @@ const chat = useChat({
 });
 ```
 
+## Tool Approval
+
+By default, `needsApproval` applies to all tools. You can limit it to mutation tools only using `needsApprovalFor`:
+
+```typescript
+// Require approval for all tools (default)
+const tools = createAgentTools({
+  execution: "server",
+  client: xmcClient,
+  sitecoreContextId: "your-context-id",
+  needsApproval: true,
+});
+
+// Require approval only for mutation tools (create, update, delete, etc.)
+const tools = createAgentTools({
+  execution: "server",
+  client: xmcClient,
+  sitecoreContextId: "your-context-id",
+  needsApproval: true,
+  needsApprovalFor: "mutations",
+});
+```
+
+Mutation tools are: `update_asset`, `upload_asset`, `create_personalization_version`, `revert_job`, `create_page`, `add_component_on_page`, `set_component_datasource`, `add_language_to_page`, `create_content_item`, `delete_content`, `update_content`, `create_component_datasource`.
+
 ## Page Builder Tools
 
 `pageBuilderTools` provides tools for navigating and controlling the XM Cloud Page Builder UI. These are only available client-side:

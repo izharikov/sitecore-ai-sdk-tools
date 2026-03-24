@@ -28,6 +28,7 @@ export const assetToolsConfig = {
     }),
   },
   update_asset: {
+    mutation: true,
     description:
       'Updates the metadata and properties of an existing digital asset. This allows you to modify asset information such as alt text, titles, and custom field values.',
     inputSchema: z.object({
@@ -41,6 +42,7 @@ export const assetToolsConfig = {
     }),
   },
   upload_asset: {
+    mutation: true,
     description:
       'Uploads a new digital asset to the Sitecore Experience Cloud. This allows you to add new assets to your digital asset library.',
     inputSchema: z.object({
@@ -69,6 +71,7 @@ export const environmentToolsConfig = {
 
 export const personalizationToolsConfig = {
   create_personalization_version: {
+    mutation: true,
     description:
       'Creates a new personalization definition with one or more variants.',
     inputSchema: z.object({
@@ -112,6 +115,7 @@ export const personalizationToolsConfig = {
 
 export const jobToolsConfig = {
   revert_job: {
+    mutation: true,
     description: 'Reverts the operations of the specified job.',
     inputSchema: z.object({
       jobId: z
@@ -143,6 +147,7 @@ export const pagesToolsConfig = {
     }),
   },
   create_page: {
+    mutation: true,
     description:
       'Creates a new page in the specified location with the given template, fields, and language.',
     inputSchema: z.object({
@@ -185,6 +190,7 @@ export const pagesToolsConfig = {
     }),
   },
   add_component_on_page: {
+    mutation: true,
     description:
       'Adds a component to a specific placeholder on a page. Fields - to specify datasource fields for the component.',
     inputSchema: z.object({
@@ -202,6 +208,7 @@ export const pagesToolsConfig = {
     }),
   },
   set_component_datasource: {
+    mutation: true,
     description: 'Sets the datasource for a component on a page.',
     inputSchema: z.object({
       pageId: z.string().describe('Page uuid'),
@@ -215,6 +222,7 @@ export const pagesToolsConfig = {
     }),
   },
   add_language_to_page: {
+    mutation: true,
     description: 'Creates a language version of an existing page.',
     inputSchema: z.object({
       pageId: z.string().describe('Page uuid'),
@@ -295,6 +303,7 @@ export const sitesToolsConfig = {
 
 export const contentToolsConfig = {
   create_content_item: {
+    mutation: true,
     description:
       'Creates a new content item with the specified template, fields, and location.',
     inputSchema: z.object({
@@ -310,6 +319,7 @@ export const contentToolsConfig = {
     }),
   },
   delete_content: {
+    mutation: true,
     description: 'Deletes a content item and optionally all its child items.',
     inputSchema: z.object({
       itemId: z
@@ -327,6 +337,7 @@ export const contentToolsConfig = {
     }),
   },
   update_content: {
+    mutation: true,
     description:
       'Updates comprehensive information about a content item including its fields and metadata.',
     inputSchema: z.object({
@@ -366,6 +377,7 @@ export const contentToolsConfig = {
 
 export const componentsToolsConfig = {
   create_component_datasource: {
+    mutation: true,
     description:
       'Creates a new datasource item for a specific component with the provided field values.',
     inputSchema: z.object({

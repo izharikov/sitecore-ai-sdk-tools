@@ -12,13 +12,20 @@ import {
 
 export type ToolDefinitionConfig = {
   needsApproval?: Parameters<typeof tool>[0]['needsApproval'];
+  needsApprovalFor?: 'all' | 'mutations';
 };
 
 function wrapTool(commonConfig: ToolDefinitionConfig) {
-  return function <INPUT>(params: Tool<INPUT, never>) {
+  const mode = commonConfig.needsApprovalFor ?? 'all';
+  return function <INPUT>(
+    params: Tool<INPUT, never> & { mutation?: boolean }
+  ) {
+    const { mutation, ...toolParams } = params;
+    const needsApproval =
+      mode === 'all' || mutation ? commonConfig.needsApproval : undefined;
     return tool({
-      ...params,
-      ...commonConfig,
+      ...toolParams,
+      needsApproval,
     });
   };
 }

@@ -1,7 +1,7 @@
 import { experimental_XMC } from '@sitecore-marketplace-sdk/xmc';
 import * as clientTools from './tools/agent/client';
 import * as serverTools from './tools/agent/server';
-import { NeedsApproval } from './tools/types';
+import { DefaultToolOptions } from './tools/types';
 
 export type CreateAgentToolsOptions = (
   | {
@@ -12,9 +12,8 @@ export type CreateAgentToolsOptions = (
       client: experimental_XMC;
       sitecoreContextId: string;
     }
-) & {
-  needsApproval?: NeedsApproval;
-};
+) &
+  DefaultToolOptions;
 
 export function createAgentTools(options: CreateAgentToolsOptions) {
   if (options.execution === 'client') {

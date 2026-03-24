@@ -14,10 +14,16 @@ import {
 import { DefaultToolOptions } from '../../types';
 
 function wrapTool(commonConfig: DefaultToolOptions) {
-  return function <INPUT, OUTPUT>(params: Tool<INPUT, OUTPUT>) {
+  const mode = commonConfig.needsApprovalFor ?? 'all';
+  return function <INPUT, OUTPUT>(
+    params: Tool<INPUT, OUTPUT> & { mutation?: boolean }
+  ) {
+    const { mutation, ...toolParams } = params;
+    const needsApproval =
+      mode === 'all' || mutation ? commonConfig.needsApproval : undefined;
     return tool({
-      ...params,
-      ...commonConfig,
+      ...toolParams,
+      needsApproval,
     });
   };
 }
