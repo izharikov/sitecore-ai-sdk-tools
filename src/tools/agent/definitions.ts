@@ -159,6 +159,7 @@ export const pagesToolsConfig = {
       language: z.string().describe('The language of the new page.'),
       fields: z
         .array(z.record(z.string(), fieldSchema))
+        .default([])
         .describe('The fields for the new page.'),
     }),
   },
@@ -201,6 +202,7 @@ export const pagesToolsConfig = {
       language: z.string().describe('The language of the page.'),
       fields: z
         .record(z.string(), fieldSchema)
+        .default({})
         .describe(
           'The fields for the component. Example: { "Text": "Hello world", "MaxItems": 5 }. If no fields exist, return {}.'
         ),
@@ -314,6 +316,7 @@ export const contentToolsConfig = {
       language: z.string().describe('The language of the content item.'),
       fields: z
         .record(z.string(), fieldSchema)
+        .default({})
         .describe('The fields for the content item.'),
     }),
   },
@@ -345,6 +348,7 @@ export const contentToolsConfig = {
         .describe('The unique identifier of the item to update.'),
       fields: z
         .record(z.string(), fieldSchema)
+        .default({})
         .describe('The fields to update.'),
       language: z.string().describe('The language of the item.'),
       createNewVersion: z
@@ -386,9 +390,11 @@ export const componentsToolsConfig = {
       siteName: z.string().describe('The name of the site.'),
       dataFields: z
         .record(z.string(), fieldSchema)
+        .default({})
         .describe('The fields for the datasource.'),
       children: z
         .array(z.record(z.string(), fieldSchema))
+        .default([])
         .describe('The children of the datasource.'),
       language: z.string().describe('The language of the datasource.'),
     }),

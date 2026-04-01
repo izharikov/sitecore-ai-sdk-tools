@@ -101,7 +101,6 @@ const ALLOWED_FORMATS = new Set([
 const BANNED_KEYWORDS = new Set([
   'oneOf',
   'allOf',
-  'default',
   'const',
   'not',
   'if',
@@ -129,6 +128,8 @@ const WARNED_KEYWORDS: Record<string, string> = {
     'emitted by z.record() for string keys; redundant in JSON, ignored by providers',
   pattern:
     'emitted by z.uuid(); supported by OpenAI + Anthropic, silently ignored by Gemini',
+  default:
+    'emitted by z.default(); not supported by OpenAI/Gemini but silently ignored, needed for Zod runtime parsing',
 };
 
 type JSONSchema = Record<string, unknown>;
