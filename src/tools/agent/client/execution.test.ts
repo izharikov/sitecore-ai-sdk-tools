@@ -71,7 +71,7 @@ describe('executeAgentTool', () => {
       { client, sitecoreContextId: CTX_ID },
       {
         toolName: 'delete_content',
-        input: { itemId: 'item-1', language: 'en' },
+        input: { itemId: 'a0000000-0000-4000-8000-000000000001', language: 'en' },
       }
     );
 
@@ -80,7 +80,7 @@ describe('executeAgentTool', () => {
       'xmc.agent.contentDeleteContent',
       expect.objectContaining({
         params: expect.objectContaining({
-          path: { itemId: 'item-1' },
+          path: { itemId: 'a0000000-0000-4000-8000-000000000001' },
           query: { language: 'en', sitecoreContextId: CTX_ID },
         }),
       })
@@ -106,7 +106,7 @@ describe('executeAgentTool', () => {
       {
         toolName: 'get_allowed_components_by_placeholder',
         input: {
-          pageId: 'p-1',
+          pageId: 'b0000000-0000-4000-8000-000000000002',
           placeholderName: '/main/content/',
           language: 'en',
         },
@@ -117,7 +117,7 @@ describe('executeAgentTool', () => {
       'xmc.agent.pagesGetAllowedComponentsByPlaceholder',
       expect.objectContaining({
         params: expect.objectContaining({
-          path: { pageId: 'p-1', placeholderName: 'content' },
+          path: { pageId: 'b0000000-0000-4000-8000-000000000002', placeholderName: 'content' },
         }),
       })
     );

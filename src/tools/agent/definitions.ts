@@ -8,7 +8,7 @@ export const assetToolsConfig = {
       'Retrieves detailed information about a specific digital asset including its metadata, file properties, and usage information.',
     inputSchema: z.object({
       assetId: z
-        .string()
+        .uuid()
         .describe('The unique identifier of the asset to be retrieved.'),
     }),
   },
@@ -33,7 +33,7 @@ export const assetToolsConfig = {
       'Updates the metadata and properties of an existing digital asset. This allows you to modify asset information such as alt text, titles, and custom field values.',
     inputSchema: z.object({
       assetId: z
-        .string()
+        .uuid()
         .describe('The unique identifier of the asset to be updated.'),
       fields: z.object({}).describe('The metadata of the asset to be updated.'),
       language: z.string().describe('The language of the asset to be updated.'),
@@ -46,7 +46,7 @@ export const assetToolsConfig = {
     description:
       'Uploads a new digital asset to the Sitecore Experience Cloud. This allows you to add new assets to your digital asset library.',
     inputSchema: z.object({
-      fileUrl: z.string().describe('File url to upload'),
+      fileUrl: z.url().describe('File url to upload'),
       name: z.string().describe('The name of the asset to be uploaded.'),
       itemPath: z.string().describe('The path of the asset to be uploaded.'),
       language: z
@@ -75,12 +75,12 @@ export const personalizationToolsConfig = {
     description:
       'Creates a new personalization definition with one or more variants.',
     inputSchema: z.object({
-      pageId: z.string().describe('Page uuid'),
+      pageId: z.uuid().describe('Page uuid'),
       name: z.string().describe('The name of the personalization version.'),
       variant_name: z.string().describe('The name of the variant.'),
       audience_name: z.string().describe('The name of the audience.'),
       condition_template_id: z
-        .string()
+        .uuid()
         .describe('The ID of the condition template.'),
       condition_params: z
         .object({})
@@ -94,7 +94,7 @@ export const personalizationToolsConfig = {
     description:
       'Retrieves all personalization versions configured for a specific page, including their targeting rules and content variations.',
     inputSchema: z.object({
-      pageId: z.string().describe('Page uuid'),
+      pageId: z.uuid().describe('Page uuid'),
     }),
   },
   get_condition_templates: {
@@ -107,7 +107,7 @@ export const personalizationToolsConfig = {
       'Returns a condition template by ID and its parameters for creating a personalization variant on a page.',
     inputSchema: z.object({
       templateId: z
-        .string()
+        .uuid()
         .describe('The unique identifier of the condition template.'),
     }),
   },
@@ -119,20 +119,20 @@ export const jobToolsConfig = {
     description: 'Reverts the operations of the specified job.',
     inputSchema: z.object({
       jobId: z
-        .string()
+        .uuid()
         .describe('The unique identifier of the job to be reverted.'),
     }),
   },
   get_job: {
     description: 'Retrieves the details of the specified job.',
     inputSchema: z.object({
-      jobId: z.string().describe('The unique identifier of the job.'),
+      jobId: z.uuid().describe('The unique identifier of the job.'),
     }),
   },
   list_operations: {
     description: 'Retrieves the operations associated with the specified job.',
     inputSchema: z.object({
-      jobId: z.string().describe('The unique identifier of the job.'),
+      jobId: z.uuid().describe('The unique identifier of the job.'),
     }),
   },
 };
@@ -142,7 +142,7 @@ export const pagesToolsConfig = {
     description:
       'Retrieves comprehensive information about a page including its layout, components, placeholders, and available actions.',
     inputSchema: z.object({
-      pageId: z.string().describe('Page uuid'),
+      pageId: z.uuid().describe('Page uuid'),
       language: z.string().describe('The language of the page.'),
     }),
   },
@@ -152,10 +152,10 @@ export const pagesToolsConfig = {
       'Creates a new page in the specified location with the given template, fields, and language.',
     inputSchema: z.object({
       templateId: z
-        .string()
+        .uuid()
         .describe('The ID of the template to use for the new page.'),
       name: z.string().describe('The name of the new page.'),
-      parentId: z.string().describe('The ID of the parent page.'),
+      parentId: z.uuid().describe('The ID of the parent page.'),
       language: z.string().describe('The language of the new page.'),
       fields: z
         .array(z.record(z.string(), fieldSchema))
@@ -167,7 +167,7 @@ export const pagesToolsConfig = {
       'Retrieves detailed information about a specific page template, including its fields and settings.',
     inputSchema: z.object({
       templateId: z
-        .string()
+        .uuid()
         .describe('The unique identifier of the page template.'),
     }),
   },
@@ -175,7 +175,7 @@ export const pagesToolsConfig = {
     description:
       'Retrieves a list of components that are allowed to be added to a specific placeholder on a page.',
     inputSchema: z.object({
-      pageId: z.string().describe('Page uuid'),
+      pageId: z.uuid().describe('Page uuid'),
       placeholderName: z.string().describe('The name of the placeholder.'),
       language: z.string().describe('The language of the page.'),
     }),
@@ -184,7 +184,7 @@ export const pagesToolsConfig = {
     description:
       'Retrieves a list of components that are currently added to a specific page.',
     inputSchema: z.object({
-      pageId: z.string().describe('Page uuid'),
+      pageId: z.uuid().describe('Page uuid'),
       language: z.string().describe('The language of the page.'),
       version: z.number().describe('The version of the page.'),
     }),
@@ -194,8 +194,8 @@ export const pagesToolsConfig = {
     description:
       'Adds a component to a specific placeholder on a page. Fields - to specify datasource fields for the component.',
     inputSchema: z.object({
-      pageId: z.string().describe('Page uuid'),
-      componentId: z.string().describe('The component id.'),
+      pageId: z.uuid().describe('Page uuid'),
+      componentId: z.uuid().describe('The component id.'),
       placeholderPath: z.string().describe('The path of the placeholder.'),
       componentItemName: z.string().describe('The item name of the component.'),
       language: z.string().describe('The language of the page.'),
@@ -211,12 +211,12 @@ export const pagesToolsConfig = {
     mutation: true,
     description: 'Sets the datasource for a component on a page.',
     inputSchema: z.object({
-      pageId: z.string().describe('Page uuid'),
+      pageId: z.uuid().describe('Page uuid'),
       componentId: z
-        .string()
+        .uuid()
         .describe('The unique identifier of the component.'),
       datasourceId: z
-        .string()
+        .uuid()
         .describe('The unique identifier of the datasource.'),
       language: z.string().describe('The language of the page.'),
     }),
@@ -225,7 +225,7 @@ export const pagesToolsConfig = {
     mutation: true,
     description: 'Creates a language version of an existing page.',
     inputSchema: z.object({
-      pageId: z.string().describe('Page uuid'),
+      pageId: z.uuid().describe('Page uuid'),
       language: z.string().describe('The language to add.'),
     }),
   },
@@ -240,13 +240,13 @@ export const pagesToolsConfig = {
   get_page_path_by_live_url: {
     description: 'Get the page item path corresponding to a live URL.',
     inputSchema: z.object({
-      live_url: z.string().describe('The live URL of the page.'),
+      live_url: z.url().describe('The live URL of the page.'),
     }),
   },
   get_page_screenshot: {
     description: 'Captures and returns a screenshot of the specified page.',
     inputSchema: z.object({
-      pageId: z.string().describe('Page uuid'),
+      pageId: z.uuid().describe('Page uuid'),
       version: z.number().describe('The version of the page.'),
       language: z.string().describe('The language of the page.'),
       width: z.number().describe('The width of the screenshot.'),
@@ -256,7 +256,7 @@ export const pagesToolsConfig = {
   get_page_html: {
     description: 'Retrieves the HTML content of a specific page.',
     inputSchema: z.object({
-      pageId: z.string().describe('Page uuid'),
+      pageId: z.uuid().describe('Page uuid'),
       language: z.string().describe('The language of the page.'),
       version: z.number().describe('The version of the page.'),
     }),
@@ -264,7 +264,7 @@ export const pagesToolsConfig = {
   get_page_preview_url: {
     description: 'Retrieves the preview URL of a specific page.',
     inputSchema: z.object({
-      pageId: z.string().describe('Page uuid'),
+      pageId: z.uuid().describe('Page uuid'),
       language: z.string().describe('The language of the page.'),
       version: z.number().describe('The version of the page.'),
     }),
@@ -281,7 +281,7 @@ export const sitesToolsConfig = {
     description:
       'Retrieves detailed information about a specific site including its configuration, themes, and available languages.',
     inputSchema: z.object({
-      siteId: z.string().describe('The unique identifier of the site.'),
+      siteId: z.uuid().describe('The unique identifier of the site.'),
     }),
   },
   get_all_pages_by_site: {
@@ -296,7 +296,7 @@ export const sitesToolsConfig = {
     description:
       'Returns the site root item ID for a given item by traversing ancestors to find the site root template.',
     inputSchema: z.object({
-      itemId: z.string().describe('The unique identifier of the item.'),
+      itemId: z.uuid().describe('The unique identifier of the item.'),
     }),
   },
 };
@@ -308,10 +308,10 @@ export const contentToolsConfig = {
       'Creates a new content item with the specified template, fields, and location.',
     inputSchema: z.object({
       templateId: z
-        .string()
+        .uuid()
         .describe('The ID of the template for the content item.'),
       name: z.string().describe('The name of the content item.'),
-      parentId: z.string().describe('The ID of the parent item.'),
+      parentId: z.uuid().describe('The ID of the parent item.'),
       language: z.string().describe('The language of the content item.'),
       fields: z
         .record(z.string(), fieldSchema)
@@ -323,7 +323,7 @@ export const contentToolsConfig = {
     description: 'Deletes a content item and optionally all its child items.',
     inputSchema: z.object({
       itemId: z
-        .string()
+        .uuid()
         .describe('The unique identifier of the item to delete.'),
       language: z.string().describe('The language of the item.'),
     }),
@@ -332,7 +332,7 @@ export const contentToolsConfig = {
     description:
       'Retrieves detailed information about a specific content item using its unique identifier.',
     inputSchema: z.object({
-      itemId: z.string().describe('The unique identifier of the item.'),
+      itemId: z.uuid().describe('The unique identifier of the item.'),
       language: z.string().describe('The language of the item.'),
     }),
   },
@@ -342,7 +342,7 @@ export const contentToolsConfig = {
       'Updates comprehensive information about a content item including its fields and metadata.',
     inputSchema: z.object({
       itemId: z
-        .string()
+        .uuid()
         .describe('The unique identifier of the item to update.'),
       fields: z
         .record(z.string(), fieldSchema)
@@ -369,7 +369,7 @@ export const contentToolsConfig = {
     description:
       'Retrieves the available content templates that can be inserted as child items under the specified parent item.',
     inputSchema: z.object({
-      itemId: z.string().describe('The unique identifier of the item.'),
+      itemId: z.uuid().describe('The unique identifier of the item.'),
       language: z.string().describe('The language of the item.'),
     }),
   },
@@ -382,7 +382,7 @@ export const componentsToolsConfig = {
       'Creates a new datasource item for a specific component with the provided field values.',
     inputSchema: z.object({
       componentId: z
-        .string()
+        .uuid()
         .describe('The unique identifier of the component.'),
       siteName: z.string().describe('The name of the site.'),
       dataFields: z
@@ -399,7 +399,7 @@ export const componentsToolsConfig = {
       'Searches for available datasources that can be used with a specific component.',
     inputSchema: z.object({
       componentId: z
-        .string()
+        .uuid()
         .describe('The unique identifier of the component.'),
       term: z.string().describe('The search term.'),
     }),
@@ -416,7 +416,7 @@ export const componentsToolsConfig = {
       'Retrieves detailed information about a specific component including its fields, datasource requirements, and configuration options.',
     inputSchema: z.object({
       componentId: z
-        .string()
+        .uuid()
         .describe('The unique identifier of the component.'),
     }),
   },
