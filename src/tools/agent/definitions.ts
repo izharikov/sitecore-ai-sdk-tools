@@ -201,7 +201,6 @@ export const pagesToolsConfig = {
       language: z.string().describe('The language of the page.'),
       fields: z
         .record(z.string(), fieldSchema)
-        .default({})
         .describe(
           'The fields for the component. Example: { "Text": "Hello world", "MaxItems": 5 }. If no fields exist, return {}.'
         ),
